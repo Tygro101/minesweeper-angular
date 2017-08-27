@@ -5,7 +5,7 @@ declare var swal: any;
 @Component({
   selector: 'game-window',
   templateUrl: './partials/app.component.html',
-  styleUrls: ['./styles/app.component.css']
+  styleUrls:  ['./styles/app.component.css']
 })
 export class AppComponent {
   @Input() gameData:Minesweeper;
