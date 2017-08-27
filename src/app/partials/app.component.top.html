@@ -1,0 +1,30 @@
+<div>
+    <div id="wrapper">    
+        <div class="col-md-4">
+            <div class="navBox">
+                <div>
+                    <label>Width  :  </label>
+                    <input  (keyup)="CheckWidth()" type="number" min="5" max="300" [(ngModel)]="width" >
+                    <label>height  :  </label>
+                    <input (keyup)="CheckHeight()" type="number" min="5" max="300" [(ngModel)]="height">
+                </div>
+                <div>
+                    <label>mines  :  </label>
+                    <input (keyup)="CheckMines()" type="number" min="1" max="{{width*height}}" [(ngModel)]="mines">
+                </div>
+                <div>
+                    <button (click)="Start()">Start</button>
+                </div>
+                <label>superman mode  :  </label>
+                <input [(ngModel)]="isSuperman" type="checkbox" (change)="SupermanMode($event)" />
+            </div>
+        </div>
+    </div>
+    <div id="wrapper">  
+        <div class="col-md-4">
+            <div class="gameBox">
+                <game-window [(gameData)]="gameItem"></game-window>
+            </div>
+        </div>
+    </div>
+</div>
