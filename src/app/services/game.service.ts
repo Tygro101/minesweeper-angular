@@ -2,11 +2,12 @@ export class Minesweeper{
     public Rows:Array<Row>;
     public FlagedCells:Array<Cell>;
     public flags:number;
-
+    public inSupermanMode;
     //private inSupermanMode:boolean;
     public width:number;
     public hight:number;
-     mines:number;
+    mines:number;
+    
  
 
 
@@ -19,11 +20,7 @@ export class Minesweeper{
     }
 
     public SupermanMode(inSupermanMode:boolean){
-        for (let row = 0; row <= this.hight; row++) {
-            for (let column = 0; column <= this.width; column++) {
-                this.GetCell(row, column).inSupermanMode = inSupermanMode;
-            }
-        }
+        this.inSupermanMode = inSupermanMode;
     }
 
     private SetupBoard(inSupermanMode:boolean = false){
@@ -34,7 +31,7 @@ export class Minesweeper{
         for(var i = 0; i<=this.hight ; i++){
             var row = new Row();
             for(var j = 0 ; j <= this.width; j++){
-                row.AddCell(new Cell(i, j, inSupermanMode));
+                row.AddCell(new Cell(i, j));
             }
             this.Rows.push(row);
         }
@@ -187,14 +184,12 @@ class Cell{
     public hasMine:boolean;
     public mineNumber:number;
     public isFlaged:boolean;
-    public inSupermanMode:boolean;
-    public constructor(row:number, column:number, inSupermanMode:boolean = false){
+    public constructor(row:number, column:number){
         this.isCovered = true;
         this.hasMine =  false;
         this.isFlaged = false;
         this.mineNumber = 0;
         this.row = row;
         this.column = column;
-        this.inSupermanMode = inSupermanMode;
     }
 }

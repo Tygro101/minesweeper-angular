@@ -5,11 +5,9 @@
     <table border="1">
         <tr *ngFor="let Row of gameData.Rows">
             <td *ngFor="let Cell of Row.Cells">
-                <img *ngIf="Cell.isCovered && !Cell.inSupermanMode" src="assets/covered.png" (click)="Reveal($event, Cell)"/>
-                <img *ngIf="IsEmpty(Cell)" src="assets/empty.png" />
-                <img *ngIf="GameOver(Cell)" src="assets/mine.png" />
-                <img *ngIf="ShowNumber(Cell)" src="{{GetNumberPicture(Cell)}}" />
-                <img *ngIf="Cell.isFlaged" src="assets/flag.png" (click)="Reveal($event, Cell)"/>
+                <img class="flag" *ngIf="Cell.isFlaged" src="assets/flag.png"  (click)="Reveal($event, Cell)"/>
+                <img class="overlay" *ngIf="Cell.isCovered" src="{{getCoveredImg(Cell)}}" (click)="Reveal($event, Cell)"/>
+                <img *ngIf="true" src="{{getPicture(Cell)}}"/>
             </td>
         </tr>
     </table>

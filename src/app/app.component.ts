@@ -14,49 +14,60 @@ export class AppComponent {
   constructor(){
     this.alertHasShown = false;
   }
+
+  public getCoveredImg(cell){
+    if(this.gameData.inSupermanMode){
+      return "assets/covered-semi-transparent.png"
+    }
+    return "assets/covered.png"
+  }
+
+  public getPicture(cell){
+    if(cell.hasMine)
+      return "assets/mine.png";
+    return this.GetNumberPicture(cell);
+
+  }
+
   public Reveal(event, cell){
     if(event.shiftKey){
-      if(cell.isFlaged){
-        cell.isFlaged = false;
-        cell.isCovered = true;
-        this.gameData.flags++;
-        this.gameData.DeleteFlagedCell(cell);
-      }
-      else{
-        if(this.gameData.flags===0){
-          alert("You out of flags!");
-        }else{
-          this.gameData.AddFlagedCell(cell);
-          cell.isCovered = false;
-          cell.isFlaged = true;
-          this.gameData.flags--;
-          this.IsWon(this.gameData.flags);
-        }
-      }
+      this.AddRemoveFlag(cell);
     }else{
-      //cell.isCovered = false;
+      if(cell.isFlaged){
+        return;
+      }
+      if(cell.hasMine)
+        swal({
+          title:'Game Over!',
+          type: 'error',
+        }).then(this.ResetGame());
       this.gameData.AutoExpand(cell);
     }
 
   }
 
-  public IsEmpty(cell){
-    if(cell.hasMine || cell.mineNumber>0 || (cell.isCovered && !cell.inSupermanMode) || cell.isFlaged){
-      return false;
+  public AddRemoveFlag(cell){
+    if(cell.isFlaged){
+      cell.isFlaged = false;
+      this.gameData.flags++;
+      this.gameData.DeleteFlagedCell(cell);
     }
-    return true;
-  }
-
-  public ShowNumber(cell){
-    if(cell.mineNumber>0 && !(cell.isCovered && !cell.inSupermanMode) && !cell.hasMine && !cell.isFlaged){
-      return true;
+    else{
+      if(this.gameData.flags===0){
+        alert("You out of flags!");
+      }else{
+        this.gameData.AddFlagedCell(cell);
+        cell.isFlaged = true;
+        this.gameData.flags--;
+        this.IsWon(this.gameData.flags);
+      }
     }
-    return false;
   }
-
 
   public GetNumberPicture(cell){
     switch(cell.mineNumber){
+      case 0:
+        return "assets/empty.png"
       case 1:
         return "assets/number-1.png"
       case 2:
@@ -74,21 +85,6 @@ export class AppComponent {
       case 8:
         return "assets/number-8.png"            
     }
-  }
-  public GameOver(cell){
-    if(cell.hasMine && !(cell.isCovered && !cell.inSupermanMode) && !cell.isFlaged){
-      if(!cell.inSupermanMode){
-        if(!this.alertHasShown){
-          this.alertHasShown = true;
-          swal({
-            title:'Game Over!',
-            type: 'error',
-          }).then(this.ResetGame())
-        }
-      }
-      return true;
-    }
-    return false;
   }
 
   private IsWon(flags){
