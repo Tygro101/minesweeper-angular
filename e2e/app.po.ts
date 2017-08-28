@@ -1,6 +1,6 @@
-import { browser, by, element } from 'protractor';
+import { browser, element, by } from 'protractor';
 
-export class Test222Page {
+export class MinesweeperPage {
   navigateTo() {
     return browser.get('/');
   }

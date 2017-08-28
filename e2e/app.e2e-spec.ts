@@ -1,14 +1,14 @@
-import { Test222Page } from './app.po';
+import { MinesweeperPage } from './app.po';
 
-describe('test222 App', () => {
-  let page: Test222Page;
+describe('minesweeper App', function() {
+  let page: MinesweeperPage;
 
   beforeEach(() => {
-    page = new Test222Page();
+    page = new MinesweeperPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });
