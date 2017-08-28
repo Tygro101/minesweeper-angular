@@ -24,6 +24,12 @@ export class AppComponentTop {
     public Start(){
         if(this.mines<0)
             this.mines = 0;
+        if(this.height < 1){
+            this.height = 5; // default value 5
+        }
+        if(this.width < 1){
+            this.width = 1; // default value 5
+        }
         if(this.mines>this.width*this.height){
             this.mines = this.width*this.height;
         }
@@ -34,17 +40,11 @@ export class AppComponentTop {
         if(this.width >300){
             this.width = 300;
         }
-        if(this.width < 1){
-            this.width = 1;
-        }
     }
 
     CheckHeight(){
         if(this.height >300){
             this.height = 300;
-        }
-        if(this.height < 1){
-            this.height = 1;
         }
     }
 
