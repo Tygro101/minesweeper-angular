@@ -15,7 +15,7 @@ export class Minesweeper{
         this.width = width-1;
         this.height = height-1;
         this.mines = mines;
-        this.inSupermanMode = inSupermanMode;
+        //this.inSupermanMode = inSupermanMode;
         this.SetupBoard(inSupermanMode);
     }
 
