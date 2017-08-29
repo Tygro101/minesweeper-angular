@@ -16,14 +16,14 @@ export class Minesweeper{
         this.hight = hight-1;
         this.mines = mines;
         this.inSupermanMode = inSupermanMode;
-        this.SetupBoard(inSupermanMode);
+        this.SetupBoard();
     }
 
     public SupermanMode(inSupermanMode:boolean){
         this.inSupermanMode = inSupermanMode;
     }
 
-    private SetupBoard(inSupermanMode:boolean = false){
+    private SetupBoard(){
         this.flags = this.mines;
         this.Rows = new Array<Row>();
         this.FlagedCells = new Array<Cell>();
