@@ -25,10 +25,10 @@ export class AppComponentTop {
         if(this.mines<0)
             this.mines = 0;
         if(this.height < 1){
-            this.height = 5; // default value 5
+            this.height = 10; // default value 10
         }
         if(this.width < 1){
-            this.width = 1; // default value 5
+            this.width = 10; // default value 10
         }
         if(this.mines>this.width*this.height){
             this.mines = this.width*this.height;

@@ -14,7 +14,7 @@ describe('AppComponentTop', ()=>{
 
 
     it('rows count should be queal to height',  async(() => {
-        expect(app.gameItem.Rows.length-1).toBe(app.gameItem.hight);
+        expect(app.gameItem.Rows.length-1).toBe(app.gameItem.height);
     }));
     
     it('column count should be queal to width',  async(() => {
@@ -44,7 +44,7 @@ describe('AppComponentTop', ()=>{
         expect(app.gameItem).not.toBeNull();
         expect(app.gameItem.flags).toBe(app.gameItem.mines);
         expect(app.gameItem.Rows[0].Cells.length-1).toBe(app.gameItem.width);
-        expect(app.gameItem.Rows.length-1).toBe(app.gameItem.hight);
+        expect(app.gameItem.Rows.length-1).toBe(app.gameItem.height);
         for(var row = 0; row< app.height; row++){ //rows
             for(var column = 0 ; column<app.width; column++){ //coulums
                 if(app.gameItem.Rows[row].Cells[column].hasMine)
