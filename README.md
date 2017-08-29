@@ -5,7 +5,7 @@
 * typescript (npm install -g typescript)
 
 ##The why to run the test:
-    ng test - will run the tests scenarios
+ng test - will run the tests scenarios
 
 ##Test scenarios
 * if default game object exist
