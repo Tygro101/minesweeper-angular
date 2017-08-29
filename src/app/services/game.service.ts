@@ -2,11 +2,11 @@ export class Minesweeper{
     public Rows:Array<Row>;
     public FlagedCells:Array<Cell>;
     public flags:number;
-    public inSupermanMode;
+    public inSupermanMode:boolean;
     //private inSupermanMode:boolean;
     public width:number;
     public hight:number;
-    mines:number;
+    public mines:number;
     
  
 
