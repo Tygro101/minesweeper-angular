@@ -16,6 +16,6 @@
 * sumulate a win
 * complete new game test with - width = 15, height = 12, mines = 17, with all the above test's
 
-## Load the page local
-* 'ng serve' will load the page locally
+## Load the page localy
+* 'ng serve' command
 
