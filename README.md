@@ -1,8 +1,8 @@
 # Minesweeper Angular
 
 prerequisite:
-    * the project is build with angular-cli 1.2.8 (npm install -g @angular/cli@1.2.8)
-    * typescript (npm install -g typescript)
+    - the project is build with angular-cli 1.2.8 (npm install -g @angular/cli@1.2.8)
+    - typescript (npm install -g typescript)
 
 The why to run the test:
     ng test - will run the tests scenarios
