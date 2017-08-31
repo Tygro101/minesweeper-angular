@@ -133,7 +133,12 @@ export class Minesweeper{
     }
 
     public AutoExpand(cell): void {
-        if (cell.isCovered){
+        var cellsArray:Array<Cell> = new Array<Cell>();
+        cellsArray.push(cell);
+        while(cellsArray.length>0){
+            this.FullAutoExpand(cellsArray.pop(), 0,cellsArray);
+        }
+        /*if (cell.isCovered){
             cell.isCovered = false;
             if(!cell.hasMine && cell.mineNumber === 0) {
                 if (cell.row + 1 <= this.height) { // it is not last in cell.row, so i can chcek next bombBox
@@ -149,6 +154,49 @@ export class Minesweeper{
                     this.AutoExpand(this.GetCell(cell.row, cell.column - 1));
                 }
             
+            }
+        }*/
+    }
+
+    /*
+        The counter is used to cut the stuck of the function to small chunks, 
+        by adding the cell to the array list i can continue where i left the recursion
+    */
+    public FullAutoExpand(cell, counter:number, cellsArray:Array<Cell>) {
+        if (cell.isCovered){
+            cell.isCovered = false;
+            if(!cell.hasMine && cell.mineNumber === 0) {
+                if (cell.row + 1 <= this.height) { 
+                    if(counter == 1){
+                        counter = 0;
+                        cellsArray.push(this.GetCell(cell.row + 1, cell.column))
+                    }else
+                        this.FullAutoExpand(this.GetCell(cell.row + 1, cell.column), counter++, cellsArray);
+                }
+
+                if (cell.column + 1 <= this.width) { 
+                    if(counter == 1){
+                        counter = 0;
+                        cellsArray.push(this.GetCell(cell.row, cell.column + 1))
+                    }else
+                        this.FullAutoExpand(this.GetCell(cell.row, cell.column + 1), counter++, cellsArray);
+                }
+
+                if (cell.row - 1 >= 0) { 
+                    if(counter == 1){
+                        counter = 0;
+                        cellsArray.push(this.GetCell(cell.row - 1, cell.column))
+                    }else                    
+                        this.FullAutoExpand(this.GetCell(cell.row - 1, cell.column), counter++, cellsArray);
+                }
+
+                if (cell.column - 1 >= 0) { 
+                    if(counter == 1){
+                        counter = 0;
+                        cellsArray.push(this.GetCell(cell.row, cell.column - 1))
+                    }else                     
+                        this.FullAutoExpand(this.GetCell(cell.row, cell.column - 1), counter++, cellsArray);
+                }
             }
         }
     }
